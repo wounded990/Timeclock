@@ -272,31 +272,30 @@ public class Administrator {
             System.out.println("Input is not valid");
         }
 
+        String bonusInput = "";
         try {
-
-
-
+            do {
                 System.out.println("Do you want to give a bonus? Y or N: ");
-                String answer = input.nextLine();
-
-                while (answer.isEmpty()) {
+                bonusInput = input.next();
+                if (bonusInput == "") {
                     System.out.println("Answer cannot be empty");
                     System.out.print("Do you want to give a bonus? Y or N: ");
-                    answer = input.nextLine();
+                    bonusInput = input.next();
                 }
-                if (answer.equals("Y")) {
-                    System.out.println("Enter the bonus: ");
-                    int bonus = input.nextInt();
-                    payStub.setBonus(bonus);
-                    payStub.bonus = bonus;
-                } else {
-                    System.out.println("No bonus");
+            } while (bonusInput == "");
 
-                }
-
+            if (bonusInput.equals("Y") || bonusInput.equals("y")) {
+                System.out.println("Enter the bonus: ");
+                int bonus = input.nextInt();
+                payStub.setBonus(bonus);
+                payStub.bonus = bonus;
+            } else {
+                System.out.println("No bonus");
+            }
         } catch (Exception ex) {
             System.out.println("Input is not valid");
         }
+
         System.out.println("-------------------- Welcome to the Baheer's Payroll System --------------------");
 
         Company company = new Company();
